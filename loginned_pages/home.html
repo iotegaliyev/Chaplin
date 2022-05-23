@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+    <title>Movies</title>
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <nav>
+                <a href="home.html"><img class="logo" src="../images/logo.png" alt="logo"></a>
+                
+                <ul class="menu">
+                    <li><a style="color: #ff5100" href="home.html">Movies</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+                <div id="user__name"></div>
+                <button id="signout-btn" class="btn nav__btn">Sign out</button>
+            </nav>
+        </div>
+    </header>
+
+
+    <main class="main_home">
+        <div class="carousel">
+            <div class="carousel_item carousel_item--visible">
+                <img src="../images/slider/1.jpg" alt="">
+            </div>
+            <div class="carousel_item">
+                <img src="../images/slider/2.jpg" alt="">
+            </div>
+            <div class="carousel_item">
+                <img src="../images/slider/3.jpg" alt="">
+            </div>
+
+            <div class="carousel_actions">
+                <button id="carousel_button--prev">&#10094</button>
+                <button id="carousel_button--next">&#10095</button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="main__text">
+                <h2>Let's make your own cinema</h2>
+                <p>You can still enjoy the latest movies and other movies online</p>
+            </div>
+        </div>
+
+        <div class="movie_box">
+            <div class="container">
+                <h3>Movies</h3>
+                <div class="movies">
+                    <div class="movie">
+                        <div class="gradient"></div>
+                        <img src="../images/movies/spiderman.jpg" alt="">
+                        <div class="movie_name">Spider-Man: No Way Home</div>
+                    </div>
+                    <a class="movie" href="player.html">
+                        <div class="movie">
+                            <div class="gradient"></div>
+                            <img src="../images/movies/uncle.jpg" alt="">
+                            <div class="movie_name">The Man from U.N.C.L.E.</div>
+                        </div>
+                    </a>
+                    <div class="movie">
+                        <div class="gradient"></div>
+                        <img src="../images/movies/vice.jpg" alt="">
+                        <div class="movie_name">Vice</div>
+                    </div>
+                    <div class="movie">
+                        <div class="gradient"></div>
+                        <img src="../images/movies/gentlemen.jpg" alt="">
+                        <div class="movie_name">The Gentlemen</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Our services</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order status</a></li>
+                        <li><a href="">Payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="line"></div>
+        <p class="copyright">Copyright ©2021 | Designed With by Otegaliyev Islam</p>
+    </footer>
+
+    <script>
+        if (localStorage.getItem('users') == null) {
+            users = [];
+        }else {
+            users = JSON.parse(localStorage.getItem('users'));
+            document.addEventListener('DOMContentLoaded', () => {
+                for(var i=0; i<users.length; i++){
+                    if(users[i].isLoggedIn){
+                        document.getElementById('user__name').innerHTML = users[i].username;
+                        return;
+                    }
+                }
+            });
+        }
+
+        var signOutBtn = document.getElementById('signout-btn');
+        var users = JSON.parse(localStorage.getItem('users'))
+    
+
+        signOutBtn.addEventListener('click', function() {
+            
+            for(var i=0; i<users.length; i++){
+                if(users[i].isLoggedIn){
+                    users[i].isLoggedIn = false;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    document.location.href = "../home.html";
+                    return;
+                }
+            }
+    });
+    </script>
+    <script src="../scripts/slider.js"></script>
+</body>
+</html>

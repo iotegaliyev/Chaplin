@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>The Man From U.N.C.L.E</title>
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <nav>
+                <a href="home.html"><img class="logo" src="../images/logo.png" alt="logo"></a>
+                
+                <ul class="menu">
+                    <li><a style="color: #ff5100" href="home.html">Movies</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+                <div id="user__name"></div>
+                <button id="signout-btn" class="btn nav__btn">Sign out</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main_player">
+        <div class="container">
+            <h3 class="nameofmovie">The Man from U.N.C.L.E.</h3>
+            <section class="poster_description">
+                <div class="poster"><img src="../images/movies/uncle.jpg" alt=""></div>
+                <div class="description">
+                    <h4>DESCRIPTION</h4>
+                    <p>In the early 1960s, CIA agent Napoleon Solo and KGB operative Illya Kuryakin participate in a joint mission against a mysterious criminal organization, which is working to proliferate nuclear weapons.</p>
+                    <p><b>Rating (IMDb):</b> 7.3</p>
+                    <p><b>Duration:</b> 116 min.</p>
+                    <p><b>Year:</b> 2015</p>
+                    <p><b>Country:</b> USA</p>
+                    <p><b>Genre:</b> Adventure, Action, Comedy</p>
+                    <p><b>Director:</b> Guy Ritchie</p>
+                </div>
+            </section>
+        </div>
+        <div class="line"></div>
+        <div class="container">
+            <h3>Actors</h3>
+            <section class="actors">
+                <div class="actor">
+                    <img src="../images/actors/1.png" alt="">
+                    <p class="actor_name">Henry Cavill</p>
+                </div>
+                <div class="actor">
+                    <img src="../images/actors/2.png" alt="">
+                    <p class="actor_name">Armie Hammer</p>
+                </div>
+                <div class="actor">
+                    <img src="../images/actors/3.png" alt="">
+                    <p class="actor_name">Alicia Vikander</p>
+                </div>
+                <div class="actor">
+                    <img src="../images/actors/4.png" alt="">
+                    <p class="actor_name">Elizabeth Debicki</p>
+                </div>
+                <div class="actor">
+                    <img src="../images/actors/5.png" alt="">
+                    <p class="actor_name">Hugh Grant</p>
+                </div>
+                <div class="actor">
+                    <img src="../images/actors/6.png" alt="">
+                    <p class="actor_name">Luca Calvani</p>
+                </div>
+            </section>
+        </div>
+        <div class="line"></div>
+        <div class="container">
+            <div class="player">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4K4Iv_N9Nno" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Our services</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order status</a></li>
+                        <li><a href="">Payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="line"></div>
+        <p class="copyright">Copyright ©2021 | Designed With by Otegaliyev Islam</p>
+    </footer>
+
+    <script>
+        if (localStorage.getItem('users') == null) {
+            users = [];
+        }else {
+            users = JSON.parse(localStorage.getItem('users'));
+            document.addEventListener('DOMContentLoaded', () => {
+                for(var i=0; i<users.length; i++){
+                    if(users[i].isLoggedIn){
+                        document.getElementById('user__name').innerHTML = users[i].username;
+                        return;
+                    }
+                }
+            });
+        }
+
+        var signOutBtn = document.getElementById('signout-btn');
+        var users = JSON.parse(localStorage.getItem('users'))
+    
+
+        signOutBtn.addEventListener('click', function() {
+            
+            for(var i=0; i<users.length; i++){
+                if(users[i].isLoggedIn){
+                    users[i].isLoggedIn = false;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    document.location.href = "../home.html";
+                    return;
+                }
+            }
+    });
+    </script>
+</body>
+</html>

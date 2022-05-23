@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>About</title>
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <nav>
+                <a href="home.html"><img class="logo" src="../images/logo.png" alt="logo"></a>
+                
+                <ul class="menu">
+                    <li><a href="home.html">Movies</a></li>
+                    <li><a style="color: #ff5100" href="about.html">About</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+                <div id="user__name"></div>
+                <button id="signout-btn" class="btn nav__btn">Sign out</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main_about">
+        <div class="container">
+            <h3>About us</h3>
+            <section class="article">
+                <div class="article_column">
+                    <h4>Who we are?</h4>
+                    <img src="../images/about/1.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident debitis nostrum molestiae consequuntur voluptatem tenetur. Temporibus commodi blanditiis dolores distinctio ipsam soluta a eligendi perferendis. Quisquam perferendis corporis obcaecati voluptate?</p>
+                </div>
+                <div class="article_column">
+                    <h4>What we do?</h4>
+                    <img src="../images/about/2.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus laudantium odit beatae aspernatur, modi cumque tempora aliquid quia repudiandae ab. Vel quasi vero laboriosam tenetur distinctio, suscipit unde blanditiis aut.</p>
+                </div>
+                <div class="article_column">
+                    <h4>Our Services</h4>
+                    <img src="../images/about/3.jpg" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias enim a officia temporibus sapiente, veritatis perferendis explicabo est error minus magnam voluptas, consequuntur animi qui perspiciatis, vel exercitationem. Illum, aliquid.</p>
+                </div>
+            </section>
+            <div id="map">
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Our services</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order status</a></li>
+                        <li><a href="">Payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="line"></div>
+        <p class="copyright">Copyright ©2021 | Designed With by Otegaliyev Islam</p>
+    </footer>
+
+    <script>
+        if (localStorage.getItem('users') == null) {
+            users = [];
+        }else {
+            users = JSON.parse(localStorage.getItem('users'));
+            document.addEventListener('DOMContentLoaded', () => {
+                for(var i=0; i<users.length; i++){
+                    if(users[i].isLoggedIn){
+                        document.getElementById('user__name').innerHTML = users[i].username;
+                        return;
+                    }
+                }
+            });
+        }
+
+        var signOutBtn = document.getElementById('signout-btn');
+        var users = JSON.parse(localStorage.getItem('users'))
+    
+
+        signOutBtn.addEventListener('click', function() {
+            
+            for(var i=0; i<users.length; i++){
+                if(users[i].isLoggedIn){
+                    users[i].isLoggedIn = false;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    document.location.href = "../home.html";
+                    return;
+                }
+            }
+    });
+    </script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"></script>
+    <script src="../scripts/map.js"></script>
+</body>
+</html>

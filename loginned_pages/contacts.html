@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contacts</title>
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <nav>
+                <a href="home.html"><img class="logo" src="../images/logo.png" alt="logo"></a>
+                
+                <ul class="menu">
+                    <li><a href="home.html">Movies</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a style="color: #ff5100" href="contacts.html">Contacts</a></li>
+                </ul>
+                <div id="user__name"></div>
+                <button id="signout-btn" class="btn nav__btn">Sign out</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main_contacts">
+        <div class="container">
+            <div class="contacts_text">
+                <h3>Contact us</h3>
+                <p>Any question or remarks? Just write us a message!</p>
+            </div>
+            <div class="contacts_box">
+                <form action="https://formspree.io/f/mpzbwwqw" method="POST" class="form_contacts">
+                    <label for="firstname">First Name</label><br>
+                    <input type="text" class="contacts_input" id="firstname" placeholder="John" name="First Name:" required><br>
+                    <label for="lastname">Last Name</label><br>
+                    <input type="text" class="contacts_input" id="lastname" placeholder="Rickman" name="Last Name:" required><br>
+                    <label for="email">Email</label><br>
+                    <input type="email" class="contacts_input" id="email" placeholder="j.rickman@gmail.com" name="Email:" required><br>
+                    <label for="phone">Phone</label><br>
+                    <input type="text" class="contacts_input" id="phone" placeholder="+7 771 547 5128" name="Phone:" required><br>
+                    <label for="message">Message</label><br>
+                    <textarea id="message" class="contacts_input" cols="30" rows="5" name="Message:" required></textarea><br>
+                    <input type="submit" value="Send" id="send">
+                </form>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Our services</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order status</a></li>
+                        <li><a href="">Payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="line"></div>
+        <p class="copyright">Copyright ©2021 | Designed With by Otegaliyev Islam</p>
+    </footer>
+
+    <script>
+        if (localStorage.getItem('users') == null) {
+            users = [];
+        }else {
+            users = JSON.parse(localStorage.getItem('users'));
+            document.addEventListener('DOMContentLoaded', () => {
+                for(var i=0; i<users.length; i++){
+                    if(users[i].isLoggedIn){
+                        document.getElementById('user__name').innerHTML = users[i].username;
+                        return;
+                    }
+                }
+            });
+        }
+
+        var signOutBtn = document.getElementById('signout-btn');
+        var users = JSON.parse(localStorage.getItem('users'))
+    
+
+        signOutBtn.addEventListener('click', function() {
+            
+            for(var i=0; i<users.length; i++){
+                if(users[i].isLoggedIn){
+                    users[i].isLoggedIn = false;
+                    localStorage.setItem('users', JSON.stringify(users));
+                    document.location.href = "../home.html";
+                    return;
+                }
+            }
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>The Man From U.N.C.L.E.</title>
+    <style>
+        input[type="text"].valid, input[type="password"].valid {
+            border: 2px solid #008000;
+        }
+
+        input[type="text"].invalid, input[type="password"].invalid {
+            border: 2px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+
+    <header class="header">
+        <div class="container">
+            <nav>
+                <a href="home.html"><img class="logo" src="images/logo.png" alt="logo"></a>
+                
+                <ul class="menu">
+                    <li><a style="color: #ff5100" href="home.html">Movies</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+                <button id="signin-btn" class="btn nav__btn">Sign in / Sign up</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- LOGIN -->
+    <div id="login_box">
+        <div class="close"><button id="close-btn"><img class="close-icon" src="images/close.png" alt="close"></button></div>
+        
+        <div class="card-body">
+				
+            <div class="card-body-top">
+                <button id="login" class="login-btn" onclick="login()">Sign in</button>
+                <button id="register" class="register-btn" onclick="register()">Sign up</button>
+                <div id="pointer-btn"></div>
+            </div>
+
+            <div class="card-body-login">
+                <form id="login-form">
+                    <label for="username1">Username</label><br>
+                    <input type="text" id="username1" placeholder="jrickman" required><br><br>
+                    <label for="password1">Password</label><br>
+                    <input type="password" id="password1" placeholder="Jrickm@n2022" required><br>
+                    <input type="checkbox" id="show_password"><small class="show_password">Show Password</small><br>
+                    <small id="messagelogin" class="em"></small><br>
+                    <input type="submit" value="Sign in" id="sign_in">
+                </form>
+                <form id="register-form">
+                    <label for="username2">Username</label><br>
+                    <input type="text" id="username2" placeholder="jrickman" required><br>
+                    <small id="messageusername" class="em"></small><br>
+                    <label for="email2">Email</label><br>
+                    <input type="text" id="email2" placeholder="j.rickman@gmail.com" required><br>
+                    <small id="messageemail" class="em"></small><br>
+                    <label for="phone2">Phone</label><br>
+                    <input type="text" id="phone2" placeholder="+7 771 547 5128" required><br>
+                    <small id="messagephone" class="em"></small><br>
+                    <label for="password2">Password</label><br>
+                    <input type="password" id="password2" placeholder="Jrickm@n2022" required><br>
+                    <input type="checkbox" id="show_password2"><small class="show_password">Show Password</small><br>
+                    <small id="messagepassword" class="em"></small><br>
+                    <input type="submit" value="Sign up" id="sign_up">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <main class="main_player">
+        <div class="container">
+            <h3 class="nameofmovie">The Man from U.N.C.L.E.</h3>
+            <section class="poster_description">
+                <div class="poster"><img src="images/movies/uncle.jpg" alt=""></div>
+                <div class="description">
+                    <h4>DESCRIPTION</h4>
+                    <p>In the early 1960s, CIA agent Napoleon Solo and KGB operative Illya Kuryakin participate in a joint mission against a mysterious criminal organization, which is working to proliferate nuclear weapons.</p>
+                    <p><b>Rating (IMDb):</b> 7.3</p>
+                    <p><b>Duration:</b> 116 min.</p>
+                    <p><b>Year:</b> 2015</p>
+                    <p><b>Country:</b> USA</p>
+                    <p><b>Genre:</b> Adventure, Action, Comedy</p>
+                    <p><b>Director:</b> Guy Ritchie</p>
+                </div>
+            </section>
+        </div>
+        <div class="line"></div>
+        <div class="container">
+            <h3>Actors</h3>
+            <section class="actors">
+                <div class="actor">
+                    <img src="images/actors/1.png" alt="">
+                    <p class="actor_name">Henry Cavill</p>
+                </div>
+                <div class="actor">
+                    <img src="images/actors/2.png" alt="">
+                    <p class="actor_name">Armie Hammer</p>
+                </div>
+                <div class="actor">
+                    <img src="images/actors/3.png" alt="">
+                    <p class="actor_name">Alicia Vikander</p>
+                </div>
+                <div class="actor">
+                    <img src="images/actors/4.png" alt="">
+                    <p class="actor_name">Elizabeth Debicki</p>
+                </div>
+                <div class="actor">
+                    <img src="images/actors/5.png" alt="">
+                    <p class="actor_name">Hugh Grant</p>
+                </div>
+                <div class="actor">
+                    <img src="images/actors/6.png" alt="">
+                    <p class="actor_name">Luca Calvani</p>
+                </div>
+            </section>
+        </div>
+        <div class="line"></div>
+        <div class="container">
+            <div class="player">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/4K4Iv_N9Nno" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Our services</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Contacts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get help</h4>
+                    <ul>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Shipping</a></li>
+                        <li><a href="">Returns</a></li>
+                        <li><a href="">Order status</a></li>
+                        <li><a href="">Payment options</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="line"></div>
+        <p class="copyright">Copyright ©2021 | Designed With by Otegaliyev Islam</p>
+    </footer>
+
+    <script src="scripts/login.js"></script>
+</body>
+</html>
